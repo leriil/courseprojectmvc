@@ -21,7 +21,7 @@
 <!--<repositories base-package="com.infiniteskills.data.repositories"/>-->
 <!--<bean id="resourceRepository" class="com.infiniteskills.data.repositories.ResourceRepository" abstract="true"/>-->
     <context:component-scan base-package="com.infiniteskills"/>
-    <jpa:repositories base-package="com.infiniteskills.data.entities"/>
+    <jpa:repositories base-package="com.infiniteskills.data"/>
     <tx:annotation-driven/>
 
     <jdbc:embedded-database id="dataSource" type="H2"/>

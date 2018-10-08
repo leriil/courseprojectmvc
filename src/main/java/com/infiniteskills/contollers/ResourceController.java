@@ -11,6 +11,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Controller
@@ -102,5 +103,30 @@ public class ResourceController {
         status.setComplete();
         return "redirect:/resource/add";
     }
+    @RequestMapping("/find/{resourceId}")
+    public @ResponseBody Resource find(@PathVariable("resourceId") Long resourceId){
+        Optional<Resource> resource = this.resourceService.find(resourceId);
+        if(resource.isPresent()){
+            return resource.get();
+        }
+        throw new RuntimeException("resource not found");
+}
 
+    @RequestMapping("/find/{name}")
+    public @ResponseBody Resource findByName( @PathVariable("name") String name){
+        Resource resource = this.resourceService.findByName(name);
+        if(resource!=null){
+            System.out.println("found by name: "+resource);
+            return resource;
+        }
+        throw new RuntimeException("resource not found");
+    }
+
+    @RequestMapping("find/findResources")
+    public @ResponseBody List<Resource> findAllResources(){
+        for(Resource resource:this.resourceService.findResources()){
+            System.out.println("found resource: "+resource);
+        }
+        return this.resourceService.findResources();
+    }
 }
