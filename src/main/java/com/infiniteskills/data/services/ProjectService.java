@@ -16,6 +16,9 @@ public class ProjectService {
         Project designProject = this.createProject(3L,"game design", "for an online game");
         projects.addAll(Arrays.asList(new Project[]{springProject, htmlProject, designProject}));
     }
+    public void save(Project project){
+        this.projects.add(project);
+    }
 
     public List<Project>findAll(){
         return this.projects;

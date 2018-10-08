@@ -11,8 +11,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="<spring:url value="/resources/css/bootstrap-select.min.css"/>" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="<spring:url value="/resources/js/bootstrap-select.min.js"/>"></script>
+    <script src="<spring:url value="/resources/js/resource.js"/>"></script>
+    <script>var ctx = "${pageContext.request.contextPath}"</script>
 
 </head>
 <body>
@@ -25,7 +28,7 @@
 			<h1>Resource</h1>
 		</div>
 		
-		<spring:url value="/resource/save" var="formUrl"/>
+		<spring:url value="/resource/review" var="formUrl"/>
 		<form:form action="${formUrl}" method="POST" modelAttribute="resource">
 			
 			<div class="row">
@@ -56,7 +59,7 @@
 
 				<div class="form-group">
 					<label for="unitOfMeasure">Unit of Measure</label>
-					<form:checkboxes path="unitOfMeasure" items="${checkOptions}"/>
+					<form:checkboxes path="unitOfMeasure" items="${checkOptions}" />
 					<%--<input id="unit" type="text" class="form-control" name="unitOfMeasure" />--%>
 				</div>
 
@@ -65,6 +68,8 @@
 					<form:textarea path="notes" cssClass="form-control" id="notes" rows="3"/>
 						<%--<input type="text" id="resource-name" class="form-control" name="name" />--%>
 				</div>
+
+                <a id="request_link" href="<spring:url value="/resource/request"/>">Send Request</a>
 				
 				<button type="submit" class="btn btn-default">Submit</button>
 

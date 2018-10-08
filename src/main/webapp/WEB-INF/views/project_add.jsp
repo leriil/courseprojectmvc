@@ -23,13 +23,13 @@
 	<div class="container">
 		<div class="row">
 			<spring:url value="/project/add" var="formUrl"/>
-			<form:form action="${formUrl}" method="post" modelAttribute="project"/>
+			<form:form action="${formUrl}" method="post" modelAttribute="project">
 
 			
 				<div class="form-group">
 					<label for="project-name">Name</label>
-					<input type="text" id="project-name" 
-							class="form-control" name="name"/>
+					<form:input type="text" cssClass="form-control" path="name"/>
+					<form:errors path="name" />
 				</div>
 
 				<div class="form-group">
@@ -47,36 +47,41 @@
 							
 				<div class="form-group">
 					<label for="sponsor-name">Sponsor Name</label>
-					<form:input id="sponsor-name" cssClass="form-control" path="sponsor.name"/>
+					<form:input cssClass="form-control" path="sponsor.name"/>
+
 				</div>
 
 				<div class="form-group">
 					<label for="sponsor-phone">Sponsor Phone</label>
-					<input id="sponsor-phone"
-						   cssClass="form-control" path="sponsor.phone"/>
+					<form:input cssClass="form-control" path="sponsor.phone"/>
 				</div>
 
 				<div class="form-group">
-					<label for="sponsor-email">Sponsor Phone</label>
-					<input id="sponsor-email" cssClass="form-control" path="sponsor.email"/>
+					<label for="sponsor-email">Sponsor Email</label>
+					<form:input cssClass="form-control" path="sponsor.email"/>
 				</div>
 			
 
 			
 				<div class="form-group">
-					<label for="project-name">Description</label>
-					<textarea class="form-control" rows="3"></textarea>
+					<label for="project-description">Description</label>
+					<form:textarea cssClass="form-control" path="description" rows="3"></form:textarea>
+					<form:errors path="description"/>
 				</div>
-				
+
 				<div class="form-group">
-					<label for="special">Special</label>
-					<input id="special" name="special" type="checkbox"/>
+					<label for="poc1">POC1</label>
+					<form:input cssClass="form-control" path="pointsOfContact[0]"/>
 				</div>
-			
+
+				<div class="form-group">
+					<label for="poc2">POC2</label>
+					<form:input cssClass="form-control" path="pointsOfContact[1]"/>
+				</div>
+
 				<button type="submit" class="btn btn-default">Submit</button>
 	
-			</form>
-			
+			</form:form>
 		</div>
 	</div>
 </body>
